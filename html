@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Amine Ameti — Turning Ideas Into Reality</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --primary:#4B0082; /* Deep Purple */
+      --silver:#B0B0B0;  /* Silver Gray */
+      --bg:#F5F5F5;      /* Off-white */
+      --text:#000000;    /* Black */
+      --glass: rgba(255,255,255,0.06);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:'Inter',system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial;color:var(--text);background:var(--bg)}
+    .wrap{max-width:1100px;margin:36px auto;padding:36px;border-radius:18px;background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.75));box-shadow:0 8px 30px rgba(75,0,130,0.12);}
+
+    header{display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{display:flex;align-items:center;gap:16px}
+    .logo{width:72px;height:72px;border-radius:12px;background:linear-gradient(135deg,var(--primary),#6e008f);display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:18px;box-shadow:0 6px 18px rgba(75,0,130,0.18)}
+    h1{font-size:20px;margin:0;line-height:1.1}
+    h1 strong{display:block;font-size:22px;color:var(--primary);font-weight:800}
+
+    nav{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{background:var(--silver);border:none;padding:10px 14px;border-radius:10px;cursor:pointer;font-weight:600;box-shadow:0 4px 12px rgba(0,0,0,0.06);}
+    .btn:hover{transform:translateY(-3px);transition:0.18s}
+
+    main{margin-top:28px;display:grid;grid-template-columns:1fr 320px;gap:28px}
+
+    .card{background:rgba(255,255,255,0.6);padding:22px;border-radius:14px;backdrop-filter: blur(6px);box-shadow:0 8px 24px rgba(0,0,0,0.04)}
+
+    .intro{min-height:220px;display:flex;flex-direction:column;gap:12px}
+    .intro .name{font-size:28px;font-weight:800}
+    .intro p{margin:0;color:#222}
+
+    .side{position:sticky;top:36px}
+    .contact-card{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+    .email{font-weight:700;color:var(--primary)}
+
+    /* Gallery previews */
+    .folders{display:flex;flex-direction:column;gap:12px}
+    .folder{padding:14px;border-radius:12px;background:linear-gradient(90deg, rgba(75,0,130,0.06), rgba(176,176,176,0.03));display:flex;justify-content:space-between;align-items:center}
+
+    /* Modal styles */
+    .overlay{position:fixed;left:0;top:0;width:100%;height:100%;display:none;align-items:center;justify-content:center;padding:20px;z-index:1000}
+    .overlay.show{display:flex}
+    .modal{width:720px;max-width:95%;background:linear-gradient(180deg, rgba(255,255,255,0.08) , rgba(255,255,255,0.02));border:1px solid rgba(255,255,255,0.07);backdrop-filter: blur(8px);padding:20px;border-radius:14px;position:relative;color:var(--text);box-shadow:0 20px 60px rgba(11,6,28,0.35)}
+    .modal .close{position:absolute;right:12px;top:12px;background:transparent;border:1px solid rgba(0,0,0,0.06);padding:6px 10px;border-radius:8px;cursor:pointer}
+    .modal .title{font-weight:800;color:var(--primary);margin-bottom:10px}
+    .modal .content{max-height:60vh;overflow:auto}
+
+    /* Certificates list */
+    .cert-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px;border-radius:10px;background:rgba(240,240,240,0.6)}
+    .view-btn{background:transparent;border:2px solid var(--primary);color:var(--primary);padding:8px 10px;border-radius:8px;font-weight:700;cursor:pointer}
+
+    /* Progress bars */
+    .lang{display:flex;flex-direction:column;gap:8px}
+    .lang .bar{height:12px;border-radius:999px;background:#eee;overflow:hidden}
+    .lang .fill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--primary),#6e008f);width:20%}
+
+    /* gallery grid */
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px}
+    .thumb{height:110px;border-radius:10px;object-fit:cover;width:100%;display:block;border:1px solid rgba(0,0,0,0.06)}
+
+    footer{margin-top:28px;text-align:center;color:#333;font-size:14px}
+
+    @media (max-width:900px){main{grid-template-columns:1fr} .side{position:static}}
+  </style>
+</head>
+<body>
+  <div class="wrap" role="main">
+
+    <header>
+      <div class="brand">
+        <div class="logo">AA</div>
+        <div>
+          <h1><strong>Turning Ideas Into Reality — Through Photography, Design & Web Development</strong></h1>
+          <div style="font-size:13px;color:#444;margin-top:6px">Personal portfolio / CV — <strong>Amine Ameti</strong></div>
+        </div>
+      </div>
+
+      <nav aria-label="Primary navigation">
+        <button class="btn" data-open="about">About Me</button>
+        <button class="btn" data-open="courses">School / Courses</button>
+        <button class="btn" data-open="languages">Languages</button>
+        <button class="btn" data-open="gallery">My Gallery</button>
+        <button class="btn" data-open="contact">Contact Me</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="card intro">
+        <div class="name">Amine Ameti</div>
+        <p>I design and build visual experiences — photography, logos, catalogs and web projects. This single-page portfolio is fully designed & developed by me.</p>
+
+        <div style="display:flex;gap:12px;margin-top:12px">
+          <button class="btn" data-open="gallery">Open Gallery</button>
+          <button class="btn" data-open="courses">School / Courses</button>
+        </div>
+
+        <div style="margin-top:auto;color:#555;font-size:13px">Born May 2004 • Tetovo (born) • Raised Ilijaš • Languages: Bosnian, Albanian, English</div>
+      </section>
+
+      <aside class="card side">
+        <div class="contact-card">
+          <div style="font-weight:800;color:var(--primary)">Contact</div>
+          <div>For any business:</div>
+          <a class="email" href="mailto:amine.ameti@yahoo.com">amine.ameti@yahoo.com</a>
+
+          <div style="margin-top:18px;width:100%">
+            <div style="font-weight:800;margin-bottom:8px">Gallery</div>
+            <div class="folders">
+              <div class="folder"><div>Photography.</div><button class="btn" data-folder="photography">Open</button></div>
+              <div class="folder"><div>Logos and Catalog.</div><button class="btn" data-folder="logos_catalog">Open</button></div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="card">© <strong>Amine Ameti</strong> — Turning Ideas Into Reality</footer>
+  </div>
+
+  <!-- Overlay modal (generic) -->
+  <div id="overlay" class="overlay" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="close" id="modalClose">close</button>
+      <div id="modalTitle" class="title"></div>
+      <div class="content" id="modalContent"></div>
+    </div>
+  </div>
+
+  <!-- Image modal for certificates / big photos -->
+  <div id="imgOverlay" class="overlay" aria-hidden="true">
+    <div class="modal" style="max-width:90%;width:960px;">
+      <button class="close" id="imgClose">close</button>
+      <div class="title" id="imgTitle"></div>
+      <div class="content" id="imgContent" style="display:flex;justify-content:center;align-items:center;padding:10px">
+        <img id="imgViewer" src="" alt="certificate / photo" style="max-width:100%;max-height:70vh;border-radius:10px;box-shadow:0 10px 40px rgba(0,0,0,0.3)"/>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Provided content from the user
+    const aboutText = `My name is Amine, born in May 2004 in Tetovo, Macedonia, and raised in Ilijaš near Sarajevo, where I finished both middle and high school. I speak three languages — Bosnian (strongest), Albanian, and English.\n\nMy biggest passion is photography — capturing and editing moments that tell a story. In the Gallery section, you can explore a collection of my photos, all taken and edited by me. I also enjoy design, having created logos and catalogs for my father’s business, which are also showcased in the Gallery.\n\nAlongside my creative work, I hold certificates in QA Manual Testing, QA Animation Testing, and Web Development. I’m also familiar with UX/UI design. In fact, this website itself is a project I fully designed and developed.\n\nI’m passionate about combining creativity with technical skills — whether through design, development, or photography — to build meaningful and visually engaging projects.`;
+
+    const courses = [
+      {year:'2019 - 2022',title:"High School - SŠC 'Nedžad Ibrišimović', Ilijaš", img:null},
+      {year:'2023',title:'Course - QA Manuel', img:'certifikati/qamanual1.jpg'},
+      {year:'2024',title:'Course - QA animation', img:'certifikati/qaanimation1.jpg'},
+      {year:'2024',title:'Course - Web development', img:'certifikati/webdev1.jpg'}
+    ];
+
+    const languages = [
+      {name:'Bosnian',pct:100},
+      {name:'Albanian',pct:60},
+      {name:'English',pct:70}
+    ];
+
+    // Utilities
+    const overlay = document.getElementById('overlay');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalContent = document.getElementById('modalContent');
+    const modalClose = document.getElementById('modalClose');
+
+    const imgOverlay = document.getElementById('imgOverlay');
+    const imgClose = document.getElementById('imgClose');
+    const imgViewer = document.getElementById('imgViewer');
+    const imgTitle = document.getElementById('imgTitle');
+
+    function openModal(title,html){
+      modalTitle.textContent = title;
+      modalContent.innerHTML = html;
+      overlay.classList.add('show');
+      overlay.setAttribute('aria-hidden','false');
+    }
+    function closeModal(){overlay.classList.remove('show'); overlay.setAttribute('aria-hidden','true');}
+    modalClose.addEventListener('click', closeModal);
+    overlay.addEventListener('click',(e)=>{ if(e.target===overlay) closeModal(); });
+
+    function openImageModal(title,src){
+      imgTitle.textContent = title;
+      imgViewer.src = src;
+      imgOverlay.classList.add('show');
+      imgOverlay.setAttribute('aria-hidden','false');
+    }
+    function closeImageModal(){ imgOverlay.classList.remove('show'); imgOverlay.setAttribute('aria-hidden','true'); imgViewer.src=''; }
+    imgClose.addEventListener('click', closeImageModal);
+    imgOverlay.addEventListener('click',(e)=>{ if(e.target===imgOverlay) closeImageModal(); });
+
+    // Buttons
+    document.querySelectorAll('[data-open]').forEach(btn=>btn.addEventListener('click',()=>{
+      const which = btn.getAttribute('data-open');
+      if(which==='about'){
+        openModal('About Me', '<p style="white-space:pre-line;line-height:1.6">'+escapeHtml(aboutText)+'</p>');
+      } else if(which==='courses'){
+        let html = '<div style="display:flex;flex-direction:column;gap:12px">';
+        courses.forEach(c=>{
+          html += `<div class="cert-row"><div><strong>${c.year}</strong> &nbsp; ${escapeHtml(c.title)}</div>`;
+          if(c.img){ html += `<button class="view-btn" data-cert="${c.img}">VIEW</button>` }
+          html += '</div>'
+        });
+        html += '</div>';
+        openModal('School / Courses', html);
+
+        // attach handlers for VIEW after modal shown
+        setTimeout(()=>{
+          document.querySelectorAll('.view-btn').forEach(b=>b.addEventListener('click',()=>{
+            const src = b.getAttribute('data-cert');
+            openImageModal('Certificate', src);
+          }));
+        },50);
+
+      } else if(which==='languages'){
+        let html = '<div class="lang">';
+        languages.forEach(l=>{
+          html += `<div style="display:flex;justify-content:space-between;align-items:center;font-weight:700">${escapeHtml(l.name)} <span>${l.pct}%</span></div>`;
+          html += `<div class="bar"><div class="fill" style="width:${l.pct}%"></div></div>`;
+        });
+        html += '</div>';
+        openModal('Languages', html);
+      } else if(which==='gallery'){
+        // gallery main modal with folders
+        const html = `<div style="display:flex;flex-direction:column;gap:12px">`+
+          `<div class="folder" style="justify-content:space-between"><div>Photography.</div><button class="btn" data-folder="photography">Open</button></div>`+
+          `<div class="folder" style="justify-content:space-between"><div>Logos and Catalog.</div><button class="btn" data-folder="logos_catalog">Open</button></div>`+
+          `</div>`;
+        openModal('My Gallery', html);
+        setTimeout(()=>{ document.querySelectorAll('[data-folder]').forEach(b=>b.addEventListener('click',openFolderFromBtn)); },50);
+      } else if(which==='contact'){
+        openModal('Contact Me', `<div><strong>For any business:</strong><p style="margin:8px 0"><a href=\"mailto:amine.ameti@yahoo.com\">amine.ameti@yahoo.com</a></p></div>`);
+      }
+    }));
+
+    // folder openers from side or modal
+    function openFolderFromBtn(e){
+      const folder = e.currentTarget.getAttribute('data-folder');
+      openFolder(folder);
+    }
+    document.querySelectorAll('[data-folder]').forEach(b=>b.addEventListener('click',openFolderFromBtn));
+
+    // Replace with a small routine that attempts to load images from a folder by convention.
+    // Because JS cannot list local filesystem folders when run from file://, this implementation expects you to prepare a small JSON manifest if you run locally in a strict browser environment. For convenience, the script will try to load a set of common filenames. If you're hosting on a static server, create the folder structure and images and the thumbnails will work.
+    const commonPhotoNames = [
+      '1.jpg','2.jpg','3.jpg','4.jpg','5.jpg','6.jpg','7.jpg','8.jpg','9.jpg','10.jpg'
+    ];
+
+    function openFolder(folder){
+      // Build grid HTML
+      let html = `<div style=\"display:flex;flex-direction:column;gap:12px\"><div style=\"font-weight:800;margin-bottom:6px\">${folder.replace('_',' ')} </div><div class=\"grid\" id=\"grid_${folder}\">`;
+      commonPhotoNames.forEach(n=>{ html += `<img class=\"thumb\" data-src=\"gallery/${folder}/${n}\" src=\"gallery/${folder}/${n}\" alt=\"${folder} ${n}\" onerror=\"this.style.display='none'\">`; });
+      html += '</div></div>';
+      openModal(folder==='photography' ? 'Photography.' : 'Logos and Catalog.', html);
+
+      // attach click handler to open image bigger
+      setTimeout(()=>{
+        document.querySelectorAll(`#grid_${folder} .thumb`).forEach(img=>{
+          img.addEventListener('click',()=>{
+            openImageModal('', img.getAttribute('data-src'));
+          });
+        });
+      },80);
+    }
+
+    // small helper to escape HTML
+    function escapeHtml(str){ return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\"/g,'&quot;').replace(/\'/g,'&#039;'); }
+
+    // Accessibility: close modals with ESC
+    document.addEventListener('keydown',(e)=>{
+      if(e.key==='Escape'){
+        closeModal(); closeImageModal();
+      }
+    });
+
+    // If you want to programmatically open the About on load, uncomment below
+    // openModal('About Me','<p>'+escapeHtml(aboutText)+'</p>');
+  </script>
+</body>
+</html>
