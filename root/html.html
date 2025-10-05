@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Amine Ameti — Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --deep-purple: #4B0082;
+  --off-white: #F5F5F5;
+  --silver: #B0B0B0;
+  --black: #000;
+}
+
+/* ---------- BODY ---------- */
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: var(--off-white);
+  color: var(--black);
+}
+
+/* ---------- HEADER ---------- */
+.main-header {
+  background: linear-gradient(180deg, #4B0082 0%, #5e1aa0 100%);
+  color: white;
+  text-align: center;
+  padding: 100px 20px 80px;
+  box-shadow: 0 6px 30px rgba(0,0,0,0.3);
+}
+
+.header-title {
+  font-size: 3rem;
+  font-weight: 900;
+  margin: 0;
+  text-shadow: 0 3px 10px rgba(0,0,0,0.3);
+}
+
+.header-subtitle {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin: 12px 0 40px;
+  color: rgba(255,255,255,0.9);
+}
+
+.header-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.header-buttons button {
+  background: white;
+  color: var(--deep-purple);
+  border: none;
+  padding: 10px 22px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 6px 18px rgba(255,255,255,0.15);
+}
+
+.header-buttons button:hover {
+  transform: translateY(-3px);
+  background: #e8e8e8;
+}
+
+/* ---------- SECTIONS ---------- */
+section {
+  max-width: 1000px;
+  margin: 80px auto;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  padding: 40px;
+}
+
+/* ---------- ABOUT ---------- */
+.about {
+  text-align: center;
+}
+.about p {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 720px;
+  line-height: 1.7;
+  color: #333;
+  margin-bottom: 14px;
+}
+
+/* ---------- SCHOOL / CERTIFICATES ---------- */
+#school .cert-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.cert-card {
+  background: #fafafa;
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 600px;
+  width: 90%;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+.cert-card strong {
+  color: var(--deep-purple);
+}
+
+.cert-card button {
+  background: var(--deep-purple);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  margin-left: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+.cert-card button:hover {
+  background: #5e1aa0;
+}
+
+/* ---------- LANGUAGES ---------- */
+.languages {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.lang-circle {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: conic-gradient(var(--deep-purple) calc(var(--percent)*1%), #ddd 0%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  color: white;
+  box-shadow: 0 8px 20px rgba(75,0,130,0.2);
+}
+
+.lang-circle span {
+  position: absolute;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.lang-label {
+  text-align: center;
+  margin-top: 10px;
+  font-weight: 700;
+}
+
+/* ---------- GALLERY ---------- */
+.gallery {
+  text-align: center;
+}
+
+.folder {
+  display: inline-block;
+  width: 220px;
+  padding: 20px;
+  background: #fafafa;
+  border-radius: 12px;
+  margin: 10px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+}
+
+.folder:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
+
+.folder h3 {
+  color: var(--deep-purple);
+  font-weight: 800;
+}
+
+/* ---------- MODALS ---------- */
+.overlay {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.5);
+  z-index: 999;
+}
+
+.overlay.active {
+  display: flex;
+}
+
+.modal {
+  background: white;
+  padding: 30px;
+  border-radius: 14px;
+  max-width: 700px;
+  width: 90%;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  position: relative;
+}
+
+.modal img {
+  max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.modal button.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: var(--deep-purple);
+  font-weight: 900;
+  cursor: pointer;
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+  background: var(--deep-purple);
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  margin-top: 80px;
+}
+footer p {
+  margin: 4px 0;
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="main-header">
+  <h1 class="header-title">Amine Ameti</h1>
+  <p class="header-subtitle">Turning Ideas Into Reality — Through Photography, Design & Web Development</p>
+
+  <div class="header-buttons">
+    <button onclick="scrollToSection('about')">About Me</button>
+    <button onclick="scrollToSection('school')">School / Courses</button>
+    <button onclick="scrollToSection('languages')">Languages</button>
+    <button onclick="scrollToSection('gallery')">My Gallery</button>
+    <button onclick="scrollToSection('contact')">Contact</button>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section id="about" class="about">
+  <h2>About Me</h2>
+  <p>My name is Amine, born in May 2004 in Tetovo, Macedonia, and raised in Ilijaš near Sarajevo, where I finished both middle and high school. I speak three languages — Bosnian (strongest), Albanian, and English.</p>
+  <p>My biggest passion is photography — capturing and editing moments that tell a story. In the Gallery section, you can explore a collection of my photos, all taken and edited by me. I also enjoy design, having created logos and catalogs for my father’s business, which are also showcased in the Gallery.</p>
+  <p>Alongside my creative work, I hold certificates in QA Manual Testing, QA Animation Testing, and Web Development. I’m also familiar with UX/UI design. In fact, this website itself is a project I fully designed and developed.</p>
+  <p>I’m passionate about combining creativity with technical skills — whether through design, development, or photography — to build meaningful and visually engaging projects.</p>
+</section>
+
+<!-- SCHOOL / COURSES -->
+<section id="school">
+  <h2>School & Courses</h2>
+  <div class="cert-container">
+    <div class="cert-card"><strong>2019 - 2022</strong>: High School - SŠC "Nedžad Ibrišimović", Ilijaš</div>
+    <div class="cert-card"><strong>2023</strong>: Course - QA Manual <button onclick="openCert('certifikati/qamanual1.jpeg')">View</button></div>
+    <div class="cert-card"><strong>2024</strong>: Course - QA Animation <button onclick="openCert('certifikati/qaanimation1.jpeg')">View</button></div>
+    <div class="cert-card"><strong>2024</strong>: Course - Web Development <button onclick="openCert('certifikati/webdev1.jpeg')">View</button></div>
+  </div>
+</section>
+
+<!-- LANGUAGES -->
+<section id="languages">
+  <h2>Languages</h2>
+  <div class="languages">
+    <div>
+      <div class="lang-circle" style="--percent:100;"><span>100%</span></div>
+      <div class="lang-label">Bosnian</div>
+    </div>
+    <div>
+      <div class="lang-circle" style="--percent:60;"><span>60%</span></div>
+      <div class="lang-label">Albanian</div>
+    </div>
+    <div>
+      <div class="lang-circle" style="--percent:70;"><span>70%</span></div>
+      <div class="lang-label">English</div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" class="gallery">
+  <h2>My Gallery</h2>
+  <div class="folder" onclick="openFolder('photography')"><h3>Photography</h3></div>
+  <div class="folder" onclick="openFolder('logos')"><h3>Logos & Catalog</h3></div>
+</section>
+
+<!-- CERTIFICATE MODAL -->
+<div class="overlay" id="certModal">
+  <div class="modal">
+    <button class="close" onclick="closeCert()">✕</button>
+    <img id="certImage" src="" alt="Certificate">
+  </div>
+</div>
+
+<!-- GALLERY FOLDER MODAL -->
+<div class="overlay" id="galleryModal">
+  <div class="modal">
+    <button class="close" onclick="closeGallery()">✕</button>
+    <h3 id="folderTitle">Folder</h3>
+    <div id="folderGrid" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(140px,1fr)); gap:12px; margin-top:14px;"></div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact" style="text-align:center;">
+  <h2>Contact Me</h2>
+  <p>For any business inquiries:</p>
+  <p style="font-weight:800;">amine.ameti@yahoo.com</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Amine Ameti — Designed & Developed by Amine</p>
+  <p>Email: amine.ameti@yahoo.com</p>
+</footer>
+
+<script>
+/* SCROLL TO SECTION */
+function scrollToSection(id){
+  document.getElementById(id).scrollIntoView({behavior:'smooth'});
+}
+
+/* CERTIFICATE VIEWER */
+function openCert(src){
+  document.getElementById('certImage').src = src;
+  document.getElementById('certModal').classList.add('active');
+}
+function closeCert(){
+  document.getElementById('certImage').src = '';
+  document.getElementById('certModal').classList.remove('active');
+}
+
+/* GALLERY IMAGES */
+const galleryImages = {
+  photography: [
+    'photography/phy1.jpeg',
+    'photography/phy2.jpeg',
+    'photography/phy3.jpeg',
+    'photography/phy4.jpeg',
+    'photography/phy5.jpeg',
+    'photography/phy6.jpeg'
+  ],
+  logos: []
+};
+
+/* OPEN FOLDER */
+function openFolder(folder){
+  const grid = document.getElementById('folderGrid');
+  const title = document.getElementById('folderTitle');
+  grid.innerHTML = '';
+  title.textContent = folder === 'photography' ? 'Photography' : 'Logos & Catalog';
+  const images = galleryImages[folder] || [];
+  images.forEach(src=>{
+    const img = document.createElement('img');
+    img.src = src;
+    img.style.width = '100%';
+    img.style.cursor = 'pointer';
+    img.style.borderRadius = '8px';
+    img.style.boxShadow = '0 6px 18px rgba(0,0,0,0.05)';
+    img.addEventListener('click', ()=> openLightbox(src));
+    grid.appendChild(img);
+  });
+  document.getElementById('galleryModal').classList.add('active');
+}
+
+/* CLOSE FOLDER */
+function closeGallery(){
+  document.getElementById('galleryModal').classList.remove('active');
+  document.getElementById('folderGrid').innerHTML = '';
+}
+
+/* LIGHTBOX */
+function openLightbox(src){
+  const overlay = document.createElement('div');
+  overlay.classList.add('overlay');
+  overlay.style.background = 'rgba(0,0,0,0.7)';
+  overlay.style.display = 'flex';
+  overlay.style.alignItems = 'center';
+  overlay.style.justifyContent = 'center';
+  overlay.style.position = 'fixed';
+  overlay.style.inset = '0';
+  overlay.style.zIndex = '10000';
+
+  const img = document.createElement('img');
+  img.src = src;
+  img.style.maxWidth = '90%';
+  img.style.maxHeight = '80%';
+  img.style.borderRadius = '10px';
+  img.style.boxShadow = '0 10px 30px rgba(0,0,0,0.4)';
+
+  const closeBtn = document.createElement('button');
+  closeBtn.innerHTML = '✕';
+  closeBtn.style.position = 'absolute';
+  closeBtn.style.top = '20px';
+  closeBtn.style.right = '20px';
+  closeBtn.style.background = 'var(--deep-purple)';
+  closeBtn.style.color = 'white';
+  closeBtn.style.border = 'none';
+  closeBtn.style.padding = '8px 14px';
+  closeBtn.style.fontSize = '18px';
+  closeBtn.style.borderRadius = '6px';
+  closeBtn.style.cursor = 'pointer';
+  closeBtn.addEventListener('click', ()=> document.body.removeChild(overlay));
+
+  overlay.appendChild(img);
+  overlay.appendChild(closeBtn);
+  document.body.appendChild(overlay);
+}
+</script>
+
+</body>
+</html>
+
